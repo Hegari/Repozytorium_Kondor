@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << "Hello World!\n";
     int dddddd = 69;
 }
 

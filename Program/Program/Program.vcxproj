@@ -139,11 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Clinic.cpp" />
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="structures.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Clinic.h" />
+    <ClInclude Include="Interface.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="structures.h" />
     <ClInclude Include="Test.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Program.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

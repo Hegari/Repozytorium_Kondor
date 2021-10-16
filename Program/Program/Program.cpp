@@ -12,8 +12,8 @@ struct personalData {
 };
 
 struct calendar {
-    int day;
-    int hour[];
+    int day=0, month=0, year=0;
+    std::string hour[96];
 };
 
 class doctor
@@ -27,6 +27,7 @@ class clinic
 {
 public:
     clinic(std::string clinicName) :name(clinicName) {}
+    clinic(std::string clinicName, std::string clinicLocation) :name(clinicName), location(clinicLocation) {}
     std::string name, location;
     float distance;
 
@@ -58,19 +59,54 @@ public:
     };
     void addClinic(clinic newClinic) { listOfClinics.push_back(newClinic); };
     void listOfAvalibleDoctors();
-    void searchVisit();
-    void signUpForVisit();
+    void searchVisit() {};
+    void signUpForVisit() {};
     void showDeadlines();
     void locate();
+
+    void choseAction()
+    {
+        int actionNumber = 1;
+
+       while(actionNumber>0)
+       {
+        this->showInterface();
+        std::cin >> actionNumber;
+        switch (actionNumber)
+        {
+        case 1:
+            this->searchVisit();
+            break;
+
+        case 2:
+            //tutaj sa wywalane jakies dzikie bledy
+            //std::string newClinic = "poranna klinikia";
+           // std::cin >> newClinic;
+           // this->addClinic(newClinic);
+            break;
+
+        case 3:
+            this->showClinicList();
+            break;
+
+        case 4:
+            this->signUpForVisit();
+            break;
+
+        default:
+            break;
+        }
+       }
+    }
     void showInterface()
     {
-        std::cout << "wybierz akcje\n 1. znajdz klinike\n 2. dodaj klinike\n 3. wyswietl liste klinik\n 4. zapisz sie na wizyte";
+        std::cout << "wybierz akcje\n 1. znajdz klinike\n 2. dodaj klinike\n 3. wyswietl liste klinik\n 4. zapisz sie na wizyte\n";
     };
     void loadData();
     void initialize()
     {
-        this->loadData();
-        this->showInterface();
+        //this->loadData();
+        this->choseAction();
     };
     float findBestClinic();
 
@@ -83,13 +119,14 @@ private:
 int main()
 {
     interface interfejs;
-    clinic klinika1("klinika slonca");
-    clinic klinika2("klinika smierci i rozpaczy");
+    clinic klinika1("klinika slonca", "sloneczna 3");
+    clinic klinika2("klinika smierci i rozpaczy", "cmentarna 666");
 
     //interfejs.initialize();
     interfejs.addClinic(klinika1);
     interfejs.addClinic(klinika2);
     interfejs.showClinicList();
+    interfejs.initialize();
     return 0;
 }
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
